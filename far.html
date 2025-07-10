@@ -1,241 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Regestra</title>
-    <style>
-        body {
-            background-color: #f3f7f3;
-            font-family: Arial, sans-serif;
-        }
-        center {
-            width: 100%;
-        }
-        td {
-            padding: 10px;
-        }
-        input[type="text"], input[type="email"], input[type="date"], select, textarea {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        input[type="button"], input[type="submit"] {
-            padding: 10px 20px;
-            margin: 5px;
-        }
-        /* Modal styling */
-        #previewModal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
-        #modalContent {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #656363;
-            width: 80%;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close:hover, .close:focus {
-            color: black;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .number {
+      font-size: 200px;
+      font-weight: 800;
+      color: #3a4cb2;
+      position: relative;
+      text-shadow: 2px 2px #ccc;
+    }
+
+    .zero {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background: #000;
+      border-radius: 50%;
+      margin: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .face {
+      position: relative;
+      width: 100px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .eye {
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      margin: 5px;
+    }
+
+    .mouth {
+      width: 30px;
+      height: 20px;
+      background: #fff;
+      border-radius: 0 0 50% 50%;
+      margin-top: 10px;
+    }
+
+    .girl {
+      position: absolute;
+      top: -90px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 120px;
+      background: transparent;
+    }
+
+    .girl::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 35px;
+      width: 30px;
+      height: 50px;
+      background: #6c63ff;
+      border-radius: 10px;
+    }
+
+    .girl::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 45px;
+      width: 20px;
+      height: 20px;
+      background: #000;
+      border-radius: 50%;
+    }
+
+    .plant {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .plant.left {
+      left: -60px;
+    }
+
+    .plant.right {
+      right: -60px;
+    }
+
+    .leaf {
+      width: 20px;
+      height: 20px;
+      background: #4caf50;
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
-    <center>
-        <img src="e-District Project@# copy.jpg" alt="Banner" width="1350" height="375">
-        <h1>Insurance of Certificate</h1>
-        <form name="myform" onsubmit="return false;">
-            <table cellpadding="5" cellspacing="5">
-                <td>Choose Form type:</td>
-                    <td>
-                        <select name="Form type" required>
-                            <option value="">---Select---</option>
-                            <option value="Caste Certificate">Caste Certificate</option>
-                            <option value="Domicile certificate">Domicile certificate</option>
-                            <option value="Pancard New">Domicile certificate</option>
-                            <option value="Pancard Update">Domicile certificate</option>
-                        </select>
-                    </td>
-                <tr>
-                    <td>Full Name:</td>
-                    <td><input type="text" name="fname" required></td>
-                    <td>Choose District:</td>
-                    <td>
-                        <select name="district" required>
-                            <option value="">---Select---</option>
-                            <option value="Udalguri">Udalguri</option>
-                            <option value="West Karbi Anglong">West Karbi Anglong</option>
-                            <option value="Tamulpur">Tamulpur</option>
-                            <option value="Bajali">Bajali</option>
-                        </select>
-                    </td>
-                    <td>Choose Sub Division:</td>
-                    <td>
-                        <select name="Sub Division" required>
-                            <option value="">---Select---</option>
-                            <option value="Udalguri">Udalguri</option>
-                            <option value="Bhergaon">Bhergaon</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="email" name="email" required></td>
-                    <td>Mobile No.:</td>
-                    <td><input type="text" name="mobile" pattern="\d{10}" title="Enter a 10-digit mobile number" required></td>
-                    <td>Date of Birth:</td>
-                    <td><input type="date" name="dob" required></td>
-                </tr>
-                <tr>
-                    <td>Father Name:</td>
-                    <td><input type="text" name="fathername" required></td>
-                    <td>Mother Name:</td>
-                    <td><input type="text" name="mothername" required></td>
-                </tr>
-                <tr>
-                    <td>Choose Category:</td>
-                    <td>
-                        <select name="category" required>
-                            <option value="">---Select---</option>
-                            <option value="ST">ST</option>
-                            <option value="SC">SC</option>
-                            <option value="OBC">OBC</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </td>
-                    <td>Gender:</td>
-                    <td>
-                        <input type="radio" name="gender" value="Male" required> Male
-                        <input type="radio" name="gender" value="Female" required> Female
-                    </td>
-                </tr>
-                <tr>
-                    <td>Language:</td>
-                    <td>
-                        <input type="radio" name="language" value="Bodo" required> Bodo
-                        <input type="radio" name="language" value="Hindi" required> Hindi
-                        <input type="radio" name="language" value="English" required> English
-                        <input type="radio" name="language" value="Assamese" required> Assamese
-                    </td>
-                </tr>
-                <tr>
-                    <td>Address:</td>
-                    <td><textarea name="address" rows="4" required></textarea></td>
-                </tr>
-                <tr>
-                    <td>Applicant Photo:</td>
-                    <td><input type="file" name="photo1" accept="image/*" required></td>
-
-                    <td>Address Proof:</td>
-                    <td><input type="file" name="photo2" accept="image/*" required></td>
-                   
-                    <td>Age Proof:</td>
-                    <td><input type="file" name="photo3" accept="image/*" required></td>
-                </tr>
-                <tr> 
-                    <td>Ex Caste:</td>
-                    <td><input type="file" name="photo4" accept="image/*" required></td>
-
-                    <td>Parents Caste:</td>
-                    <td><input type="file" name="photo5" accept="image/*" required></td>
-
-                    <td>Legal Documents:</td>
-                    <td><input type="file" name="photo6" accept="image/*" required></td>
-                </tr>
-                <tr>
-                    <td>CBO:</td>
-                    <td><input type="file" name="photo7" accept="image/*" required></td>
-                    <td>CBO:</td>
-                    <td><input type="file" name="photo7" accept="image/*" required></td>
-
-                    <td>Other Documents:</td>
-                    <td><input type="file" name="photo8" accept="image/*" required></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align:center;">
-                        <input type="button" value="Preview" onclick="previewForm()">
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </center>
-
-    <!-- Preview Modal -->
-    <div id="previewModal">
-        <div id="modalContent">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Preview Your Details</h2>
-            <div id="preview"></div>
-            <button onclick="confirmSubmission()">Confirm & Submit</button>
-            <button onclick="editForm()">Edit</button>
+  <div class="container">
+    <div class="number">4</div>
+    <div class="zero">
+      <div class="face">
+        <div style="display: flex;">
+          <div class="eye"></div>
+          <div class="eye"></div>
         </div>
+        <div class="mouth"></div>
+      </div>
     </div>
-
-    <script>
-        function previewForm() {
-            const form = document.forms["myform"];
-            const languages = Array.from(form["language"]).filter(lang => lang.checked).map(lang => lang.value);
-            const photos = [];
-            for (let i = 1; i <= 8; i++) {
-                const photo = form["photo" + i].files[0];
-                if (photo) {
-                    const photoURL = URL.createObjectURL(photo);
-                    photos.push(`<p><strong>Document ${i}:</strong><br><img src="${photoURL}" alt="Document ${i}" height="100"></p>`);
-                }
-            }
-    
-            const previewContent = `
-                <p><strong>Form type:</strong> ${form["Form type"].value}</p>
-                <p><strong>Full Name:</strong> ${form["fname"].value}</p>
-                <p><strong>Father Name:</strong> ${form["fathername"].value}</p>
-                <p><strong>Mother Name:</strong> ${form["mothername"].value}</p>
-                <p><strong>Date of Birth:</strong> ${form["dob"].value}</p>
-                <p><strong>Email:</strong> ${form["email"].value}</p>
-                <p><strong>Mobile No.:</strong> ${form["mobile"].value}</p>
-                <p><strong>Category:</strong> ${form["category"].value}</p>
-                <p><strong>Gender:</strong> ${form["gender"].value}</p>
-                <p><strong>District:</strong> ${form["district"].value}</p>
-                <p><strong>Sub Division:</strong> ${form["Sub Division"].value}</p>
-                <p><strong>Language:</strong> ${languages.join(', ')}</p>
-                <p><strong>Address:</strong> ${form["address"].value}</p>
-                ${photos.join('')}
-            `;
-    
-            document.getElementById("preview").innerHTML = previewContent;
-            document.getElementById("previewModal").style.display = "block";
-        }
-    
-        function closeModal() {
-            document.getElementById("previewModal").style.display = "none";
-        }
-    
-        function editForm() {
-            closeModal();
-        }
-    
-        function confirmSubmission() {
-            // Generate Registration ID
-            const registrationId = "REG-" + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
-            
-            // Redirect to acknowledgment page with the Registration ID in the URL
-            window.location.href = 'acknowledgment.html' + registrationId;
-        }
-    </script>    
+    <div class="number">4</div>
+    <div class="girl"></div>
+    <div class="plant left">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="plant right">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+  </div>
 </body>
 </html>
-
