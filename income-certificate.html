@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .number {
+      font-size: 200px;
+      font-weight: 800;
+      color: #3a4cb2;
+      position: relative;
+      text-shadow: 2px 2px #ccc;
+    }
+
+    .zero {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      background: #000;
+      border-radius: 50%;
+      margin: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .face {
+      position: relative;
+      width: 100px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .eye {
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      margin: 5px;
+    }
+
+    .mouth {
+      width: 30px;
+      height: 20px;
+      background: #fff;
+      border-radius: 0 0 50% 50%;
+      margin-top: 10px;
+    }
+
+    .girl {
+      position: absolute;
+      top: -90px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 120px;
+      background: transparent;
+    }
+
+    .girl::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 35px;
+      width: 30px;
+      height: 50px;
+      background: #6c63ff;
+      border-radius: 10px;
+    }
+
+    .girl::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 45px;
+      width: 20px;
+      height: 20px;
+      background: #000;
+      border-radius: 50%;
+    }
+
+    .plant {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .plant.left {
+      left: -60px;
+    }
+
+    .plant.right {
+      right: -60px;
+    }
+
+    .leaf {
+      width: 20px;
+      height: 20px;
+      background: #4caf50;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="number">4</div>
+    <div class="zero">
+      <div class="face">
+        <div style="display: flex;">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+        <div class="mouth"></div>
+      </div>
+    </div>
+    <div class="number">4</div>
+    <div class="girl"></div>
+    <div class="plant left">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+    <div class="plant right">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+  </div>
+</body>
+</html>
