@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +37,7 @@
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom:  0;
       background: rgba(0, 0, 0, 0.5);
     }
 
@@ -79,39 +78,88 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover {
       color: #ffd700;
     }
 
-    .section {
-      padding: 4rem 2rem;
+    .director-section {
+      text-align: center;
+      padding: 3rem 2rem;
       background: #fff;
     }
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 2rem;
+    .director-section img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #004aad;
+      margin-bottom: 1rem;
+    }
+
+    .director-section h3 {
       color: #004aad;
+      margin-bottom: 0.5rem;
     }
 
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+    .director-section p {
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .card {
-      background: #e6f0ff;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
     }
 
-    .card:hover {
-      transform: translateY(-5px);
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .login-form input, .login-form select, .login-form button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      outline: none;
     }
 
     footer {
@@ -129,9 +177,7 @@
     <h2>Digital Seva</h2>
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="schemes.html">Schemes</a></li>
-      <li><a href="#">Login</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a onclick="openModal()">Login</a></li>
     </ul>
   </nav>
 
@@ -142,27 +188,131 @@
     </div>
   </header>
 
-  <section class="section">
-    <h2>Our Services</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>e-Governance</h3>
-        <p>Apply for certificates, schemes, and services from one portal.</p>
-      </div>
-      <div class="card">
-        <h3>Real-time Tracking</h3>
-        <p>Track application status and real-time service delivery updates.</p>
-      </div>
-      <div class="card">
-        <h3>Grievance Helpdesk</h3>
-        <p>Raise concerns or queries and get quick resolutions online.</p>
-      </div>
+  <!-- Director Info Section -->
+<section class="director-section">
+  <div class="director-container">
+    <div class="profile">
+      <img src="https://via.placeholder.com/180" alt="Director Photo">
+      <h3>Mr. Rajen Boro</h3>
+      <p>Director<br>
+      With a vision to digitally empower rural communities, Mr. Boro leads with integrity, innovation, and inclusion.</p>
     </div>
-  </section>
+
+    <div class="profile">
+      <img src="https://via.placeholder.com/180" alt="Sub-Director Photo">
+      <h3>Ms. Nitu Das</h3>
+      <p>Sub-Director<br>
+      Supporting strategic development and coordination for seamless public service delivery.</p>
+    </div>
+
+    <div class="profile">
+      <img src="https://via.placeholder.com/180" alt="HR Manager Photo">
+      <h3>Mr. Rohit Kalita</h3>
+      <p>HR Manager<br>
+      Ensuring efficient team operations and employee welfare across our rural service network.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .director-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .profile {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 15px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .profile img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #004aad;
+    margin-bottom: 1rem;
+  }
+
+  .profile h3 {
+    color: #004aad;
+    margin-bottom: 0.5rem;
+  }
+
+  .profile p {
+    font-size: 0.95rem;
+  }
+</style>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 style="text-align:center; color:#004aad;">Login</h2>
+      <form class="login-form" onsubmit="return handleLogin(event)">
+        <label for="userType">Login Type:</label>
+        <select id="userType" required>
+          <option value="official">Official Login</option>
+          <option value="csc">CSC Agent Login</option>
+        </select>
+
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
 
   <footer>
-    &copy; 2025 Assam Gramin Digital Seva Kendra | Designed with Assam Govt.
+    &copy; 2025 Assam Gramin Digital Seva Kendra | Designed with ❤️
   </footer>
 
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      const type = document.getElementById('userType').value;
+      const userId = document.getElementById('userId').value;
+      const password = document.getElementById('password').value;
+
+      if (type === 'csc' && userId === '5924000764' && password === 'MUSUKHA2000') {
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = 'schemes.html';
+      } else {
+        alert("Invalid credentials or login type not supported yet.");
+      }
+    }
+
+    function openModal() {
+      document.getElementById("loginModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("loginModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("loginModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    window.onload = () => {
+      const path = window.location.pathname.split('/').pop();
+      if (localStorage.getItem('loggedIn') && path === 'index.html') {
+        window.location.href = 'schemes.html';
+      }
+    }
+  </script>
 </body>
 </html>
