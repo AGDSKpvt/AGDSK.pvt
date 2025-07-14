@@ -20,6 +20,20 @@
       text-align: center;
     }
 
+    .logout-btn {
+      text-align: right;
+      padding: 1rem 2rem;
+    }
+
+    .logout-btn button {
+      background: #004aad;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
     .search-bar {
       margin: 2rem auto;
       max-width: 500px;
@@ -78,16 +92,11 @@
     <h1>Available Government Schemes</h1>
     <p>Search and explore digital certificates and services</p>
   </header>
-  <div style="text-align: right; padding: 1rem;">
-  <button onclick="logout()" style="
-    background: #004aad;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-  ">Logout</button>
-</div>
+
+  <!-- Logout Button -->
+  <div class="logout-btn">
+    <button onclick="logout()">Logout</button>
+  </div>
 
   <div class="search-bar">
     <input type="text" placeholder="Search scheme name... (Not functional)">
@@ -120,19 +129,30 @@
       <p>For SC/ST/OBC and minority students of all classes.</p>
     </div>
     <a href="far.html" style="text-decoration: none;">
-        <div class="scheme-card">
-          <h3>Caste Certificate</h3>
-          <p>Apply for SC, ST, or OBC caste certificate for reservation and benefits.</p>
-        </div>
-      </a>
-          <p>Be with as online any time .</p>
-        </div>
-      </a>      
+      <div class="scheme-card">
+        <h3>Caste Certificate</h3>
+        <p>Apply for SC, ST, or OBC caste certificate for reservation and benefits.</p>
+      </div>
+    </a>
   </div>
 
   <footer>
     &copy; 2025 Assam Gramin Digital Seva Kendra
   </footer>
+
+  <script>
+    function logout() {
+      localStorage.removeItem('loggedIn');
+      window.location.href = 'index.html';
+    }
+
+    // Prevent access to this page if not logged in
+    window.onload = () => {
+      if (!localStorage.getItem('loggedIn')) {
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
 
 </body>
 </html>
